@@ -15,7 +15,7 @@ public class VariableJoystick : Joystick
     public void SetMode(JoystickType joystickType)
     {
         this.joystickType = joystickType;
-        if(joystickType == JoystickType.Fixed)
+        if (joystickType == JoystickType.Fixed)
         {
             background.anchoredPosition = fixedPosition;
             background.gameObject.SetActive(true);
@@ -31,9 +31,12 @@ public class VariableJoystick : Joystick
         SetMode(joystickType);
     }
 
+    public bool push = false;
+
     public override void OnPointerDown(PointerEventData eventData)
     {
-        if(joystickType != JoystickType.Fixed)
+        push = true;
+        if (joystickType != JoystickType.Fixed)
         {
             background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
             background.gameObject.SetActive(true);
@@ -43,7 +46,8 @@ public class VariableJoystick : Joystick
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        if(joystickType != JoystickType.Fixed)
+        push = false;
+        if (joystickType != JoystickType.Fixed)
             background.gameObject.SetActive(false);
 
         base.OnPointerUp(eventData);
