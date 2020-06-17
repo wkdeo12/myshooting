@@ -14,10 +14,10 @@ TagManager:
   - 
   - 
   - Bound
-  - 
-  - 
-  - 
-  - 
+  - Projectile
+  - Enemy
+  - Player
+  - EnemyProjectile
   - 
   - 
   - 
