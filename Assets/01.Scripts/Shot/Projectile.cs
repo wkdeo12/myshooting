@@ -19,6 +19,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag != "Bound")
+        {
+            collision.GetComponent<Enemy>().CurrentHp -= damage;
+        }
         gameObject.SetActive(false);
     }
 }
