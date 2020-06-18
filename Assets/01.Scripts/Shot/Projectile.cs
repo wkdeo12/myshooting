@@ -6,6 +6,12 @@ public class Projectile : MonoBehaviour
 {
     public float damage;
     public float speed = 2f;
+    public FxPool fxPool;
+
+    private void Start()
+    {
+        fxPool = FindObjectOfType<FxPool>();
+    }
 
     protected virtual void FixedUpdate()
     {
@@ -22,6 +28,9 @@ public class Projectile : MonoBehaviour
         if (collision.tag != "Bound")
         {
             collision.GetComponent<Enemy>().CurrentHp -= damage;
+            var fx = fxPool.GetHitFx();
+            fx.transform.position = transform.position;
+            fx.SetActive(true);
         }
         gameObject.SetActive(false);
     }
