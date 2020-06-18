@@ -8,18 +8,20 @@ public class Player : MonoBehaviour
     public Vector2 screenMax;
     public VariableJoystick variableJoyStick;
     private Vector2 moveVector;
-    public GameObject nomalShot;
-    private ObjPool objPool;
     public UserShots currentShot;
     public int shotLv = 0;
+    public FCS fcs;
 
     private void Start()
     {
-        objPool = FindObjectOfType<ObjPool>();
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            fcs.Lv++;
+        }
     }
 
     private void FixedUpdate()
@@ -28,7 +30,7 @@ public class Player : MonoBehaviour
         transform.Translate(moveVector * Time.fixedDeltaTime);
         if (variableJoyStick.push)
         {
-            Shot();
+            fcs.Shot();
         }
     }
 
@@ -64,15 +66,6 @@ public class Player : MonoBehaviour
 
             default:
                 break;
-        }
-
-        duration -= Time.fixedDeltaTime;
-        if (duration < 0f)
-        {
-            var go = objPool.GetBullet();
-            go.transform.position = transform.position + Vector3.up * 0.1f;
-            go.SetActive(true);
-            duration = shotDeley;
         }
     }
 }

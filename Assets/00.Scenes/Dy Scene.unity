@@ -864,6 +864,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &668850149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2749824089711123748, guid: 6862aa962e5b72d4eb577fed72b9955e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2749824089919201280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &668850154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668850149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6834090c9ee8dce40bae698c42a7c8cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile:
+  - {fileID: 6489566240071561955, guid: 495ffe3bd5269e9469c9242f1eb1d208, type: 3}
+  - {fileID: 6489566240071561955, guid: 495ffe3bd5269e9469c9242f1eb1d208, type: 3}
+  - {fileID: 6489566240071561955, guid: 495ffe3bd5269e9469c9242f1eb1d208, type: 3}
+  projectilePool: []
+  delay: 0.25
+  duration: 0.25
 --- !u!1 &676935349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,8 +1587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  lv: 0
-  bullet: {fileID: 0}
+  speed: 2
 --- !u!1 &1657927266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,6 +2242,11 @@ PrefabInstance:
       propertyPath: shotDeley
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 2749824089711123752, guid: 6862aa962e5b72d4eb577fed72b9955e,
+        type: 3}
+      propertyPath: fcs
+      value: 
+      objectReference: {fileID: 668850154}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6862aa962e5b72d4eb577fed72b9955e, type: 3}
 --- !u!1001 &6489566240954171744
