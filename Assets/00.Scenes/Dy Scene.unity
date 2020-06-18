@@ -379,6 +379,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map0
       objectReference: {fileID: 0}
+    - target: {fileID: 4652540422905779944, guid: 11d5b613dbf775c4f82340025c9862b8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6057734265379446532, guid: 11d5b613dbf775c4f82340025c9862b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1393,9 +1398,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1604711299}
   projectilePool:
-  - {fileID: 1604711299}
-  - {fileID: 1604711299}
-  - {fileID: 1604711299}
+  - {fileID: 6489566240071561955, guid: b5d9a9f47a8723a41b6ef07a8b97406e, type: 3}
+  - {fileID: 6489566240071561955, guid: b5d9a9f47a8723a41b6ef07a8b97406e, type: 3}
+  - {fileID: 6489566240071561955, guid: b5d9a9f47a8723a41b6ef07a8b97406e, type: 3}
+  userShotsArray: []
 --- !u!4 &1439130482
 Transform:
   m_ObjectHideFlags: 0
@@ -1439,7 +1445,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6ce94d4cc295f724d980c6396fe7f67c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1557,6 +1563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   lv: 0
+  bullet: {fileID: 0}
 --- !u!1 &1657927266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,7 +1671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd4dc52045540a4fa3abb7f5d799188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 1
   material: {fileID: 2100000, guid: bd26e3d2d0f56b54d95b8f3b244d407f, type: 2}
   backGroundArray:
   - {fileID: 372093090}

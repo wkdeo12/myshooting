@@ -6,9 +6,11 @@ public class Projectile : MonoBehaviour
 {
     public float damage;
     public int lv;
+    public GameObject bullet;
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
+        Shot();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,20 +23,39 @@ public class Projectile : MonoBehaviour
         switch (lv)
         {
             case 0:
-                transform.Translate(Vector2.up * 2f * Time.deltaTime);
+                Lv0();
                 break;
 
             case 1:
+                Lv1();
                 break;
 
             case 2:
+                Lv2();
                 break;
 
             case 3:
+                Lv3();
                 break;
 
             default:
                 break;
         }
+    }
+
+    public virtual void Lv0()
+    {
+    }
+
+    public virtual void Lv1()
+    {
+    }
+
+    public virtual void Lv2()
+    {
+    }
+
+    public virtual void Lv3()
+    {
     }
 }

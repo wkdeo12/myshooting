@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private Vector2 moveVector;
     public GameObject nomalShot;
     private ObjPool objPool;
+    public UserShots currentShot;
+    public int shotLv = 0;
 
     private void Start()
     {
@@ -40,6 +42,30 @@ public class Player : MonoBehaviour
 
     private void Shot()
     {
+        switch (currentShot)
+        {
+            case UserShots.Fire:
+                break;
+
+            case UserShots.Ice:
+                break;
+
+            case UserShots.Thunder:
+                break;
+
+            case UserShots.Wind:
+                break;
+
+            case UserShots.Light:
+                break;
+
+            case UserShots.Darkness:
+                break;
+
+            default:
+                break;
+        }
+
         duration -= Time.fixedDeltaTime;
         if (duration < 0f)
         {
