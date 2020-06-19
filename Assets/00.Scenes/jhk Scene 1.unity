@@ -1391,11 +1391,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ad77c24a1fa0341a20c4eee832575e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1604711299}
-  projectilePool:
-  - {fileID: 1604711299}
-  - {fileID: 1604711299}
-  - {fileID: 1604711299}
+  fireHitFx: {fileID: 0}
+  destroyFx: {fileID: 0}
+  hitFxPool: []
+  destroyFxPool: []
 --- !u!4 &1439130482
 Transform:
   m_ObjectHideFlags: 0
@@ -1556,7 +1555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  lv: 0
+  speed: 2
+  fxPool: {fileID: 0}
 --- !u!1 &1657927266
 GameObject:
   m_ObjectHideFlags: 0
