@@ -197,3 +197,5 @@ MonoBehaviour:
   damage: 1
   speed: 2
   fxPool: {fileID: 0}
+  fcs: {fileID: 0}
+  hitSFX: {fileID: 8300000, guid: 4d1457e9183a33b4786c4251824abebd, type: 3}

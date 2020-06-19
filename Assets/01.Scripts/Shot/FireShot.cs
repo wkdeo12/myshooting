@@ -6,16 +6,14 @@ public class FireShot : FCS
 {
     private Vector2 pivot;
 
-    private void Start()
-    {
-    }
-
     public override void Lv0()
     {
         var go = GetBullet(Lv);
         pivot = transform.position + Vector3.up * 0.1f;
         go.transform.position = pivot;
         go.SetActive(true);
+
+        audio.Play();
     }
 
     private float noise = 0.05f;
@@ -29,6 +27,7 @@ public class FireShot : FCS
 
         go.SetActive(true);
         noise *= -1f;
+        audio.Play();
     }
 
     public override void LvUP()
@@ -45,6 +44,7 @@ public class FireShot : FCS
 
         go.SetActive(true);
         noise *= -1f;
+        audio.Play();
     }
 
     public override void Lv3()

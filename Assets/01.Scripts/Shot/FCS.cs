@@ -5,6 +5,10 @@ using UnityEngine;
 public class FCS : MonoBehaviour
 {
     protected int lv = 0;
+    public AudioClip shotSFX;
+    public AudioSource audio;
+
+    public AudioSource hitAudio;
 
     public int Lv
     {
@@ -14,6 +18,7 @@ public class FCS : MonoBehaviour
             StartCoroutine(DestroyBullet(projectilePool));
             projectilePool = new List<GameObject>();
             LvUP();
+            audio.clip = shotSFX;
         }
         get
         {
@@ -29,6 +34,8 @@ public class FCS : MonoBehaviour
     private void Start()
     {
         duration = delay;
+        audio = GetComponent<AudioSource>();
+        audio.clip = shotSFX;
     }
 
     public virtual void Shot()
