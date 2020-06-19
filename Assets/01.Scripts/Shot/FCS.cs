@@ -31,10 +31,10 @@ public class FCS : MonoBehaviour
     public float delay = 0.25f;
     public float duration = 0.25f;
 
-    private void Start()
+    protected virtual void Start()
     {
         duration = delay;
-        audio = GetComponent<AudioSource>();
+        //audio = GetComponent<AudioSource>();
         audio.clip = shotSFX;
     }
 
@@ -89,7 +89,7 @@ public class FCS : MonoBehaviour
     {
     }
 
-    public GameObject GetBullet(int lv)
+    public virtual GameObject GetBullet(int lv)
     {
         for (int i = 0; i < projectilePool.Count; i++)
         {
@@ -116,5 +116,12 @@ public class FCS : MonoBehaviour
         }
         list = null;
         yield break;
+    }
+
+    public Vector3 GetTargetPoint(Vector3 vStart, Vector3 vEnd)
+    {
+        Vector3 v = vEnd - vStart;
+        v.Normalize();
+        return v;
     }
 }

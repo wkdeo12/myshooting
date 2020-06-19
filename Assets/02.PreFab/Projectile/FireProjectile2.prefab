@@ -96,6 +96,7 @@ MonoBehaviour:
   damage: 1
   speed: 2
   fxPool: {fileID: 0}
+  velocity: {x: 0, y: 1, z: 0}
 --- !u!1 &6750081175922429155
 GameObject:
   m_ObjectHideFlags: 0

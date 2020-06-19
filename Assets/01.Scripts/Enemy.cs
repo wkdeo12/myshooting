@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : EnemyFCS
 {
     public float maxHp = 1;
     private float currenHp;
     private MonsterDestroyManager destroyManager;
+    public GameObject player;
 
     public float CurrentHp
     {
@@ -24,10 +25,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         currenHp = maxHp;
         destroyManager = FindObjectOfType<MonsterDestroyManager>();
+        player = FindObjectOfType<Player>().gameObject;
     }
 
     private void OnDisable()

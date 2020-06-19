@@ -5,7 +5,6 @@ using UnityEngine;
 public class MapScroll : MonoBehaviour
 {
     public float speed = 0.5f;
-    public Material material;
 
     public GameObject[] backGroundArray;
 

@@ -18,12 +18,14 @@ public class Projectile : MonoBehaviour
         Action();
     }
 
+    public Vector3 velocity;
+
     protected virtual void Action()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        transform.Translate(velocity * speed * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag != "Bound")
         {
