@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float maxHp = 1;
     private float currenHp;
+    private MonsterDestroyManager destroyManager;
 
     public float CurrentHp
     {
@@ -26,5 +27,11 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         currenHp = maxHp;
+        destroyManager = FindObjectOfType<MonsterDestroyManager>();
+    }
+
+    private void OnDisable()
+    {
+        destroyManager.PlayDestoryFx(1, transform.position);
     }
 }

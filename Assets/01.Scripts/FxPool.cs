@@ -5,7 +5,9 @@ using UnityEngine;
 public class FxPool : MonoBehaviour
 {
     public GameObject fireHitFx;
+    public GameObject destroyFx;
     public List<GameObject> hitFxPool;
+    public List<GameObject> destroyFxPool;
 
     public GameObject GetHitFx()
     {
@@ -27,6 +29,29 @@ public class FxPool : MonoBehaviour
         }
         var go = Instantiate(fireHitFx);
         hitFxPool.Add(go);
+        return go;
+    }
+
+    public GameObject GetDestroyFx()
+    {
+        if (destroyFxPool.Count == 0)
+        {
+            destroyFxPool.Add(Instantiate(destroyFx));
+        }
+
+        for (int i = 0; i < destroyFxPool.Count; i++)
+        {
+            if (destroyFxPool[i].activeSelf)
+            {
+                continue;
+            }
+            else
+            {
+                return destroyFxPool[i];
+            }
+        }
+        var go = Instantiate(destroyFx);
+        destroyFxPool.Add(go);
         return go;
     }
 }

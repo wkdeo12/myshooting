@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
         {
             collision.GetComponent<Enemy>().CurrentHp -= damage;
             var fx = fxPool.GetHitFx();
-            fx.transform.position = transform.position;
+            fx.transform.position = collision.bounds.ClosestPoint(transform.position);
             fx.SetActive(true);
         }
         gameObject.SetActive(false);

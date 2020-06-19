@@ -3,3 +3,6 @@
 
 public enum Bomb
 { Bomb, Bomb2 }
+
+public enum FxPlayType
+{ Nomal, Random }

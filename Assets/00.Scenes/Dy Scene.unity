@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab0ecce2000615428710353bfe44473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 300
+  maxHp: 20
 --- !u!61 &1436715252
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1418,6 +1418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1439130482}
   - component: {fileID: 1439130481}
+  - component: {fileID: 1439130483}
   m_Layer: 0
   m_Name: ObjPool
   m_TagString: Untagged
@@ -1439,7 +1440,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireHitFx: {fileID: 4833899003212893539, guid: 0fece82c80855fa42a736c17adcf58ee,
     type: 3}
+  destroyFx: {fileID: 572312227097632508, guid: 94bff16a7ff14b740af9a6dfac4712e3,
+    type: 3}
   hitFxPool: []
+  destroyFxPool: []
 --- !u!4 &1439130482
 Transform:
   m_ObjectHideFlags: 0
@@ -1454,6 +1458,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1439130483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439130480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6cbd490b2151c42b6124bb60140204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fxPool: {fileID: 0}
 --- !u!1 &1442960661
 GameObject:
   m_ObjectHideFlags: 0
