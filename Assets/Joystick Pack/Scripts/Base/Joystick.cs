@@ -72,11 +72,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         Vector2 radius = background.sizeDelta / 2;
         input = (eventData.position - position) / (radius * canvas.scaleFactor);
         FormatInput();
-        HandleInput(input.magnitude, input.normalized, radius, cam);
+        HandleInput(input.magnitude, input.normalized, radius, cam, eventData);
         handle.anchoredPosition = input * radius * handleRange;
     }
 
-    protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
+    protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam, PointerEventData eventData = null)
     {
         if (magnitude > deadZone)
         {

@@ -33,7 +33,6 @@ public class FCS : MonoBehaviour
 
     protected virtual void Start()
     {
-        duration = delay;
         //audio = GetComponent<AudioSource>();
         audio.clip = shotSFX;
     }

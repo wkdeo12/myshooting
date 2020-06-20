@@ -6,6 +6,12 @@ public class EnemyFCS : FCS
 {
     public List<Projectile> projectileCashList;
 
+    protected override void Start()
+    {
+        base.Start();
+        duration = delay;
+    }
+
     public int GetIdx(int lv)
     {
         for (int i = 0; i < projectilePool.Count; i++)

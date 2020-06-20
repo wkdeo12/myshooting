@@ -25,6 +25,16 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void OnApplicationFocus(bool focusStatus)
+
+    {
+        if (focusStatus)
+
+        {
+            DisableSystemUI.DisableNavUI();
+        }
+    }
+
     private void Start()
     {
         try

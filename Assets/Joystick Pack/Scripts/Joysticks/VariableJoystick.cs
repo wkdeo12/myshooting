@@ -53,12 +53,13 @@ public class VariableJoystick : Joystick
         base.OnPointerUp(eventData);
     }
 
-    protected override void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
+    protected override void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam, PointerEventData eventData)
     {
         if (joystickType == JoystickType.Dynamic && magnitude > moveThreshold)
         {
             Vector2 difference = normalised * (magnitude - moveThreshold) * radius;
             background.anchoredPosition += difference;
+            //background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
         }
         base.HandleInput(magnitude, normalised, radius, cam);
     }

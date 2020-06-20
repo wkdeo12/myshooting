@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class Player : MonoBehaviour
     private Vector2 moveVector;
     public UserShots currentShot;
     public int shotLv = 0;
+    public float speed = 2f;
     public FCS fcs;
+    public DragMove dragMove;
 
     private void Start()
     {
@@ -24,14 +27,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    public Text text;
+
     private void FixedUpdate()
     {
-        moveVector = new Vector2(variableJoyStick.Horizontal, variableJoyStick.Vertical);
-        transform.Translate(moveVector * Time.fixedDeltaTime);
-        if (variableJoyStick.push)
+#if UNITY_ANDROID
+        if (Input.touchCount > 0)
         {
+            Touch touch = Input.GetTouch(0);
+            Debug.Log(touch.deltaPosition);
+            text.text = touch.deltaPosition.ToString();
+            transform.Translate(touch.deltaPosition * speed * Time.fixedDeltaTime);
             fcs.Shot();
         }
+#endif
     }
 
     private void LateUpdate()
