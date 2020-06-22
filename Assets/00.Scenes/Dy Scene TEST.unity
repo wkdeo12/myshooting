@@ -1294,6 +1294,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &460789830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2749824089711123748, guid: 6862aa962e5b72d4eb577fed72b9955e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2749824089919201280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,6 +3306,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1724829005}
   - component: {fileID: 1724829004}
+  - component: {fileID: 1724829007}
+  - component: {fileID: 1724829006}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3335,12 +3343,44 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724829003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7403227, y: 1.2358364, z: -0.81823784}
+  m_LocalPosition: {x: 0, y: 0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1724829006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724829003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f4a59f56c098143a5b03310876907d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlFile: {fileID: 4900000, guid: 5bb5345eff335214e9a006feb5b000dc, type: 3}
+--- !u!114 &1724829007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724829003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6d809ab926a17448556f145352c762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 460789830}
+  bulletBank: {fileID: 11400000, guid: ea4d420eef0335748a340c394345eb00, type: 2}
+  useDefaultBulletIfMissing: 0
+  scale: 0.5
+  timeSpeed: 0.1
+  gameDifficulty: 0.1
+  fpsLimit: 60
 --- !u!1 &1812821946
 GameObject:
   m_ObjectHideFlags: 0
