@@ -1,8 +1,10 @@
 ﻿#region Script Synopsis
-    //Subclass of FireBase for instantiating, and maintaining a pool of, bullets and is attached to an emitter point gameobject.
-    //Instantiation can occur at different intervals depending on methods chosen, rate, pause and pause length counters.
-    //Learn more about firing scripts at: https://neondagger.com/variabullet2d-quick-start-guide/#firing-shots
-#endregion
+
+//Subclass of FireBase for instantiating, and maintaining a pool of, bullets and is attached to an emitter point gameobject.
+//Instantiation can occur at different intervals depending on methods chosen, rate, pause and pause length counters.
+//Learn more about firing scripts at: https://neondagger.com/variabullet2d-quick-start-guide/#firing-shots
+
+#endregion Script Synopsis
 
 using UnityEngine;
 
@@ -17,34 +19,35 @@ namespace ND_VariaBULLET
         public ParentType ParentToEmitter;
 
         [Header("Rate Pattern")]
-
         [Tooltip("Ignores any rate scaling that has been set in GlobalShotManager.")]
         public bool IgnoreGlobalRateScale;
 
         [Range(200, 1)]
         [Tooltip("Sets rate of shots. [Lower number = more shots].")]
         public int ShotRate;
+
         private Timer shotRateCounter = new Timer(0);
 
         [Range(1, 100)]
         [Tooltip("Sets rate of intermittent gaps (pauses) between shots. [Lower number = more frequent gaps. 100 = no gaps].")]
         public float PauseRate;
+
         private Timer pauseRateCounter = new Timer(0);
 
         [Range(1, 100)]
         [Tooltip("Sets length of gaps produced by PauseRate.")]
         public int PauseLength;
+
         private Timer pauseLengthCounter = new Timer(0);
 
         [Tooltip("Sets whether subsequent shots from this emitter appear over or under previous ones.")]
         public ShotOverlap ShotOverlap = ShotOverlap.Over;
 
-
         [Header("Shot Pooling")]
-
         [SerializeField]
         [Tooltip("Enables pooling of fired shot at emitter level. Pool is destroyed when emitter is destroyed.")]
         private bool _poolingEnabled = false;
+
         public bool PoolingEnabled { get { return _poolingEnabled; } set { _poolingEnabled = value; } }
 
         [Tooltip("Automatically starts emitter with calculated set of pre-pooled shots.")]
@@ -107,7 +110,7 @@ namespace ND_VariaBULLET
             return (int)(calc3 * PauseRate / maxBulletSpeed);
         }
 
-        protected override bool ButtonPress()
+        public override bool ButtonPress()
         {
             if (Input.GetKeyDown(controller.CommandKey)) { firstShotCounterReset(); return false; }
 
@@ -128,7 +131,7 @@ namespace ND_VariaBULLET
                 triggered = true;
                 firstShotCounterReset();
                 return true;
-            }          
+            }
             else
             {
                 triggered = false;
@@ -143,7 +146,7 @@ namespace ND_VariaBULLET
         }
 
         protected override bool AutoHoldTemplate(bool commandType)
-        { 
+        {
             if (commandType && !AutoHold)
             {
                 firstShotCounterReset();
@@ -196,7 +199,7 @@ namespace ND_VariaBULLET
         }
 
         private void firstShotCounterReset() //resets on initial key command, allows for immediate spawn on first trigger/buttonpress
-        {       
+        {
             shotRateCounter.ForceFlag(ShotRate + 1);
             pauseRateCounter.Reset();
             pauseLengthCounter.Reset();

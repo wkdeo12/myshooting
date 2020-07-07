@@ -1,8 +1,10 @@
 ﻿#region Script Synopsis
-    //Subclass of FireBase for instantiating lasers and laser-like projects. A Monobehavior that comes attached to an emitter point gameobject.
-    //Instantiation can occur at different intervals depending on methods chosen.
-    //Learn more about firing scripts at: https://neondagger.com/variabullet2d-quick-start-guide/#firing-shots
-#endregion
+
+//Subclass of FireBase for instantiating lasers and laser-like projects. A Monobehavior that comes attached to an emitter point gameobject.
+//Instantiation can occur at different intervals depending on methods chosen.
+//Learn more about firing scripts at: https://neondagger.com/variabullet2d-quick-start-guide/#firing-shots
+
+#endregion Script Synopsis
 
 using UnityEngine;
 
@@ -26,7 +28,7 @@ namespace ND_VariaBULLET
         }
 
         public override void InstantiateShot()
-        {        
+        {
             GameObject firedShot = Instantiate(Shot) as GameObject;
             firedShot.transform.parent = this.transform;
 
@@ -50,7 +52,7 @@ namespace ND_VariaBULLET
                 audiosrc.mute = false;
                 audiosrc.loop = true;
                 audiosrc.Play();
-               
+
                 OnStoppedFiring.AddListener(muteAudio);
             }
         }
@@ -62,7 +64,7 @@ namespace ND_VariaBULLET
             OnStoppedFiring.RemoveListener(muteAudio);
         }
 
-        protected override bool ButtonPress()
+        public override bool ButtonPress()
         {
             if (Input.GetKeyDown(controller.CommandKey))
                 return false;

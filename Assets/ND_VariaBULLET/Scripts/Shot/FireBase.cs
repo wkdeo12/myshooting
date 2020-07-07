@@ -1,8 +1,10 @@
 ﻿#region Script Synopsis
-    //Base class for firing scripts attached to emitters. Mainly used for common firing properties.
-    //Examples: FireBullet, FireExpanding (lasers)
-    //Learn more about firing scripts at: https://neondagger.com/variabullet2d-quick-start-guide/#firing-shots
-#endregion
+
+//Base class for firing scripts attached to emitters. Mainly used for common firing properties.
+//Examples: FireBullet, FireExpanding (lasers)
+//Learn more about firing scripts at: https://neondagger.com/variabullet2d-quick-start-guide/#firing-shots
+
+#endregion Script Synopsis
 
 using UnityEngine;
 using System;
@@ -24,6 +26,7 @@ namespace ND_VariaBULLET
 
         [Tooltip("Prefab shot type that this emitter fires.")]
         public GameObject Shot;
+
         protected SpriteRenderer rend;
 
         protected const float speedLimit = 100;
@@ -88,17 +91,22 @@ namespace ND_VariaBULLET
                 Debug.Log("Audio Event Already Attached");
         }
 
-        protected abstract bool ButtonPress();
+        public abstract bool ButtonPress();
+
         protected virtual bool ButtonPressAutoHold()
         {
             return AutoHoldTemplate(Input.GetKeyDown(controller.CommandKey));
         }
+
         protected abstract bool AutoFire();
+
         protected virtual bool AutoFireAutoHold()
         {
             return AutoHoldTemplate(controller.TriggerAutoFire);
         }
+
         protected abstract bool AutoHoldTemplate(bool commandType);
+
         protected abstract bool ShootAtCurrentInterval();
 
         public abstract void InstantiateShot();
