@@ -237,7 +237,50 @@ namespace ND_VariaBULLET
 
             int physicsLayer = LayerMask.NameToLayer(rend.sortingLayerName);
             firedShot.layer = physicsLayer;
+            shotScript.sortLayer = rend.sortingLayerName;
+            increment += (int)ShotOverlap;
+            shotScript.sortOrder = increment + rend.sortingOrder - 9999;
+            shotScript.InitialSet();
 
+            if (audiosrc != null)
+                audiosrc.Play();
+
+            GlobalShotManager.Instance.ActiveBullets++;
+        }
+
+        public override void InstantiateShot(LayerMask layer)
+        {
+            GameObject firedShot;
+
+            if (Pool.list.Count > 0)
+                firedShot = RemoveFromPool(0);
+            else if (GlobalShotBank.Instance.ContainsShot(Shot.name))
+                firedShot = GlobalShotBank.Instance.RemoveFromPool(Shot.name, 0);
+            else
+                firedShot = Instantiate(Shot) as GameObject;
+
+            //Below two lines added to fix pooled bullets retaining parent localscale, resulting in incorrect 180 flipping when re-instantiated
+            firedShot.transform.parent = null;
+            firedShot.transform.localScale = Shot.transform.localScale;
+
+            ShotBase shotScript = firedShot.GetComponent<ShotBase>();
+            shotScript.Emitter = this.transform;
+            shotScript.ShotSpeed = this.ShotSpeed;
+            shotScript.Trajectory = this.angleToPercentage();
+            shotScript.ExitPoint = controller.ExitPointOffset + LocalOffset;
+            shotScript.FiringScript = this;
+            shotScript.PoolBank = BankingEnabled;
+
+            if (ParentToEmitter == ParentType.never)
+                shotScript.ParentToEmitter = ParentType.never;
+            else if (ParentToEmitter == ParentType.always)
+                shotScript.ParentToEmitter = ParentType.always;
+            else
+                shotScript.ParentToEmitter = ParentType.whileShotHeld;
+
+            int physicsLayer = LayerMask.NameToLayer(rend.sortingLayerName);
+            //firedShot.layer = physicsLayer;
+            firedShot.layer = layer;
             shotScript.sortLayer = rend.sortingLayerName;
             increment += (int)ShotOverlap;
             shotScript.sortOrder = increment + rend.sortingOrder - 9999;

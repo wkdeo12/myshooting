@@ -111,6 +111,8 @@ namespace ND_VariaBULLET
 
         public abstract void InstantiateShot();
 
+        public abstract void InstantiateShot(LayerMask layer);
+
         private bool isNode()
         {
             if (Utilities.IsEditorMode())

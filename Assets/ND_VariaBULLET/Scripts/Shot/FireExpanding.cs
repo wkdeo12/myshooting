@@ -57,6 +57,36 @@ namespace ND_VariaBULLET
             }
         }
 
+        public override void InstantiateShot(LayerMask layer)
+        {
+            GameObject firedShot = Instantiate(Shot) as GameObject;
+            firedShot.transform.parent = this.transform;
+
+            ShotBase shotScript = firedShot.GetComponent<ShotBase>();
+            shotScript.ShotSpeed = ShotSpeed;
+            shotScript.ExitPoint = controller.ExitPointOffset + LocalOffset;
+            shotScript.Emitter = this.transform;
+            shotScript.FiringScript = this;
+
+            int physicsLayer = LayerMask.NameToLayer(rend.sortingLayerName);
+            firedShot.layer = physicsLayer;
+
+            shotScript.sortLayer = rend.sortingLayerName;
+            shotScript.sortOrder = rend.sortingOrder - 9999;
+            shotScript.InitialSet();
+
+            shotRef = firedShot;
+
+            if (audiosrc != null)
+            {
+                audiosrc.mute = false;
+                audiosrc.loop = true;
+                audiosrc.Play();
+
+                OnStoppedFiring.AddListener(muteAudio);
+            }
+        }
+
         private void muteAudio()
         {
             audiosrc.loop = false;

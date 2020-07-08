@@ -9,25 +9,42 @@ public class TestPlayer : NetworkBehaviour
     [SerializeField] private Vector3 movement = new Vector3();
 
     public FireBase[] firepivot;
+    public float speed = 10f;
+    public LayerMask shotLayer;
 
     private void Start()
     {
         firepivot = GetComponentsInChildren<FireBase>();
+        if (netId == 1)
+        {
+            shotLayer = LayerMask.NameToLayer("1p");
+        }
+        else
+        {
+            shotLayer = LayerMask.NameToLayer("2p");
+        }
+        gameObject.layer = shotLayer;
     }
 
     [Client]
     private void Update()
     {
         if (!hasAuthority) { return; }
-
-        if (Input.GetKeyDown(KeyCode.S))
+        if (isLocalPlayer)
         {
-            CmdShot();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                CmdShot();
+            }
+
+            //CmdMove();
+            movement = Vector3.zero;
+
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+
+            transform.Translate(movement * speed * Time.deltaTime);
         }
-
-        if (!Input.GetKeyDown(KeyCode.Space)) { return; }
-
-        CmdMove();
     }
 
     [Command]
@@ -49,10 +66,17 @@ public class TestPlayer : NetworkBehaviour
     {
         for (int i = 0; i < firepivot.Length; i++)
         {
-            firepivot[i].InstantiateShot();
+            firepivot[i].InstantiateShot(shotLayer);
         }
     }
 
     [ClientRpc]
-    private void RpcMove() => transform.Translate(movement);
+    private void RpcMove()
+    {
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+    }
 }
