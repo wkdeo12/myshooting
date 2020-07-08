@@ -49,7 +49,6 @@ public class TestPlayer : NetworkBehaviour
     {
         for (int i = 0; i < firepivot.Length; i++)
         {
-            Debug.Log("s");
             firepivot[i].InstantiateShot();
         }
     }
