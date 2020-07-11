@@ -138,7 +138,7 @@ MonoBehaviour:
   RandomStartFrame: 0
   RandomStartRotation: 1
   rotationSpeed: 3
-  rotationSpeedRange: 0
+  rotationSpeedRange: 0.8
   RotationDirection: 2
   DissipateDelay: 0
   DissipateSpeed: 0
