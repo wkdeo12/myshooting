@@ -14,6 +14,9 @@ public class TestPlayer : NetworkBehaviour
     public SpreadPattern pattern;
     private bool up = false;
 
+    public Vector2 screenMin;
+    public Vector2 screenMax;
+
     private void Start()
     {
         firepivot = GetComponentsInChildren<FireBase>();
@@ -65,6 +68,14 @@ public class TestPlayer : NetworkBehaviour
             }
 
             transform.Translate(movement * speed * Time.deltaTime);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (isLocalPlayer)
+        {
+            transform.position = new Vector2(Mathf.Clamp(transform.position.x, screenMin.x, screenMax.x), Mathf.Clamp(transform.position.y, screenMin.y, screenMax.y));
         }
     }
 
