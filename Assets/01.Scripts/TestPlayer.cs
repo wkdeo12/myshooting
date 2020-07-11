@@ -40,13 +40,8 @@ public class TestPlayer : NetworkBehaviour
         }
     }
 
-    [Client]
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Debug.Log(isLocalPlayer);
-        }
         if (!hasAuthority) { return; }
         if (isLocalPlayer)
         {
@@ -55,6 +50,10 @@ public class TestPlayer : NetworkBehaviour
                 CmdShot();
             }
 
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                StartCoroutine(BeastMode());
+            }
             //CmdMove();
             movement = Vector3.zero;
 
@@ -110,5 +109,14 @@ public class TestPlayer : NetworkBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
+    }
+
+    private IEnumerator BeastMode()
+    {
+        while (true)
+        {
+            CmdShot();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }
