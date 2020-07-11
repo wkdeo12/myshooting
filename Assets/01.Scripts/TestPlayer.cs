@@ -11,6 +11,7 @@ public class TestPlayer : NetworkBehaviour
     public FireBase[] firepivot;
     public float speed = 10f;
     public LayerMask shotLayer;
+    public SpreadPattern pattern;
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class TestPlayer : NetworkBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                CmdShot();
+                RpcShot();
             }
 
             //CmdMove();
